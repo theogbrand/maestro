@@ -6,8 +6,12 @@ from rich.panel import Panel
 from datetime import datetime
 import json
 
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=".env")
+
 # Set up the Anthropic API client
-client = Anthropic(api_key="YOUR API")
+# client = Anthropic(api_key="YOUR API")
+client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 def calculate_subagent_cost(model, input_tokens, output_tokens):
     # Pricing information per model
@@ -83,7 +87,7 @@ def haiku_sub_agent(prompt, search_query=None, previous_haiku_tasks=None, contin
     qna_response = None
     if search_query:
         # Initialize the Tavily client
-        tavily = TavilyClient(api_key="YOUR API KEY")
+        tavily = TavilyClient(api_key=os.environ["TAVILY_KEY"])
 
         # Perform a QnA search based on the search query
         qna_response = tavily.qna_search(query=search_query)

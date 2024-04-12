@@ -6,9 +6,11 @@ from rich.console import Console
 from rich.panel import Panel
 from datetime import datetime
 import json
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=".env")
 
 # Set up the Anthropic API client
-anthropic_client = Anthropic(api_key="YOUR ANTHROPIC API KEY")
+anthropic_client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 # Set up the OpenAI API client
 openai_client = OpenAI(api_key="YOUR OPENAI API KEY")

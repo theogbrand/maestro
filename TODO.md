@@ -1,0 +1,1 @@
+* webview tool is headless browser, screenshot to use multimodal feature
